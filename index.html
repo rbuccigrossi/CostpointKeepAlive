@@ -1,0 +1,53 @@
+
+<HTML>
+<HEAD>
+ <TITLE>The Costpoint Keep-Alive Bookmark</TITLE>
+</HEAD>
+<BODY>
+
+<B>Disclaimer:</B> I won't guarantee that this works well or even that
+it won't suddenly cause your car's tires to go flat. If you have
+problems with this bookmark, please 
+<a href="https://github.com/rbuccigrossi/CostpointKeepAlive/issues">file an issue report</a>
+because it's my fault. Currently <b>I have only tested it on Chrome.</b>
+
+<P>
+
+Are you tired of having Costpoint's sessions expire on you? Then
+behold! I have a bookmark that will check every 10 seconds to see if the
+"Session Timeout" dialog appeared, and if so, will press the button for
+you.
+
+<P>
+
+To use it click-drag (click, hold, and drag) on the following link and drag it into your Bookmark bar:
+
+<P>
+<a href="javascript:(function(){ setInterval(function(){ if (!(window.getComputedStyle(document.getElementById("timeoutDiv")).display === "none")){ document.getElementById("timeoutBtn").click();};},10000); alert("Keep Alive Engaged");})();">Costpoint Keep Alive</a>
+
+<P>
+To use it:
+<UL>
+<LI>Open and log into Costpoint</LI>
+<LI>Open up the Timesheet App in Costpoint</LI>
+<LI>Click on your Costpoint Keep Alive bookmark</LI>
+</UL>
+
+
+<P>
+For the curious, here is the source (every 5 minutes it clicks the
+Refresh menu icon and then the 4th menu item, which refreshes the app):
+
+<pre>
+(function(){
+  setInterval(function(){ 
+    if (!(window.getComputedStyle(document.getElementById("timeoutDiv")).display === "none")){ 
+      document.getElementById("timeoutBtn").click();
+    };
+  },10000);
+  alert("Keep Alive Engaged");
+})();
+</pre>
+  
+</BODY>
+</HTML>
